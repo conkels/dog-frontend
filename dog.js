@@ -17,7 +17,7 @@ let showData = async () => {
   for (let d of returnedData) {
     let div = document.createElement("div");
     div.style = "margin:10px;";
-    div.innerHTML = `Breed: ${d.breed}, Name: ${d.name}, Age: ${d.age}, Male: ${d.isMale}`;
+    div.innerHTML = `ID: ${d.id}, Breed: ${d.breed}, Name: ${d.name}, Age: ${d.age}, Male: ${d.isMale}`;
     paragraphToSelect.append(div);
   }
 };
@@ -35,7 +35,8 @@ function inputForm() {
 }
 
 let getOne = async (id) => {
-  let response = await fetch("http://localhost:8080/get/id");
+  let d=findSearch.value
+  let response = await fetch("http://localhost:8080/get/"+d);
   if (response.status !== 200) {
     throw new Error("Request has failed!");
   }
@@ -51,7 +52,7 @@ let showOne = async () => {
 
   let div = document.createElement("div");
   div.style = "margin:10px;";
-  div.innerHTML = `Breed: ${returnedData.breed}, Name: ${returnedData.name}, Age: ${returnedData.age}, Male: ${returnedData.isMale}`;
+  div.innerHTML = `ID: ${returnedData.id}, Breed: ${returnedData.breed}, Name: ${returnedData.name}, Age: ${returnedData.age}, Male: ${returnedData.isMale}`;
   paragraphToSelect.append(div);
 };
 
@@ -84,3 +85,27 @@ fetch("http://localhost:8080/create", {
   .then((data) => console.log(`Request succeeded with JSON response ${data}`))
   .catch((error) => console.log(`Request failed ${error}`));
 }
+
+function showDelete() {
+  if (dbtn.value == "Delete") {
+    delete1.style.visibility = "visible";
+    dbtn.value = "Hide";
+  } else {
+    delete1.style.visibility = "hidden";
+    dbtn.value = "Delete";
+  }
+}
+
+let deleteOne = async() => {
+let id = deleteInput.value
+      fetch("http://localhost:8080/remove/"+id, { 
+          method: 'delete' 
+        })
+        .then((data) => {
+          console.log(`Request succeeded with JSON response ${data}`);
+          // some function to execute if successful
+        })
+        .catch((error) => {
+          console.log(`Request failed ${error}`)
+        });
+      }

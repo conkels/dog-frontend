@@ -35,17 +35,19 @@
         </button>
         <input id="fbtn" type="button" onclick="showFindSearch()" value="Find">
         <div id=find1 style="visibility: hidden;">
-          <input type="text">
-          <button type="button">Go</button>
+          <input id="findSearch" type="text">
+          <button type="button" onclick="showOne()">Go</button>
         </div>
         <input type="button" id="cbtn" value="Create" onclick="inputForm()">
         </button>
         <button type="button">
           Edit
         </button>
-        <button type="button">
-          Delete
-        </button>
+        <input id="dbtn" type="button" value="Delete" onclick="showDelete()">
+        <div id=delete1 style="visibility: hidden;">
+          <input id="deleteInput" type="text">
+          <button type="button" onclick="deleteOne()">Remove</button>
+        </div>
         <br />
       </div>
     </form>
