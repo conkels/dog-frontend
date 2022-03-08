@@ -109,3 +109,45 @@ let id = deleteInput.value
           console.log(`Request failed ${error}`)
         });
       }
+
+      function showReplace() {
+        if (rbtn.value == "Replace") {
+          replace1.style.visibility = "visible";
+          rbtn.value = "Hide";
+        } else {
+          replace1.style.visibility = "hidden";
+          rbtn.value = "Replace";
+        }
+      }
+
+      let replaceOne = async() => {
+        let id=replaceSearch.value
+        fetch("http://localhost:8080/replace/"+id, { 
+            method: 'put', 
+            headers: {
+              "Content-type": "application/json" 
+            },
+            body: JSON.stringify( 
+              {
+                "breed": breedTab.value,
+                "name": nameTab.value,
+                "age": ageTab.value,
+                "isMale": genderTab.value
+              }
+            )
+          })
+          .then(res => res.json())
+          .then((data) => console.log(`Request succeeded with JSON response ${data}`))
+          .catch((error) => console.log(`Request failed ${error}`));
+        }
+
+        function replaceForm() {
+          if (okbtn.value == "OK") {
+            form1.style.visibility = "visible";
+            ebtn.style.visibility="visible"
+            abtn.style.visibility="hidden"
+          } else {
+            form1.style.visibility = "hidden";
+           
+          }
+        }
