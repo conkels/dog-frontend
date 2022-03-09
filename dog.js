@@ -28,9 +28,11 @@ function inputForm() {
   if (cbtn.value == "Create") {
     form1.style.visibility = "visible";
     cbtn.value = "Hide";
+    abtn.style.visibility="visible"
   } else {
     form1.style.visibility = "hidden";
     cbtn.value = "Create";
+    abtn.style.visibility="hidden"
   }
 }
 
@@ -116,6 +118,8 @@ let id = deleteInput.value
           rbtn.value = "Hide";
         } else {
           replace1.style.visibility = "hidden";
+          form1.style.visibility="hidden"
+          ebtn.style.visibility="hidden"
           rbtn.value = "Replace";
         }
       }
@@ -139,6 +143,12 @@ let id = deleteInput.value
           .then(res => res.json())
           .then((data) => console.log(`Request succeeded with JSON response ${data}`))
           .catch((error) => console.log(`Request failed ${error}`));
+
+          breedTab.value=""
+          nameTab.value=""
+          ageTab.value=""
+          genderTab.value=""
+
         }
 
         function replaceForm() {
@@ -148,6 +158,6 @@ let id = deleteInput.value
             abtn.style.visibility="hidden"
           } else {
             form1.style.visibility = "hidden";
-           
+            abtn.style.visibility="visible"
           }
         }
