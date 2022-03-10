@@ -1,0 +1,9 @@
+.dataDiv {
+    height: auto;
+    text-align: center;
+}
+
+.body {
+    background: linear-gradient(to right, #3e5151, #decba4);
+    border: 2px solid;
+}
